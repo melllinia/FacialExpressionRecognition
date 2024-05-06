@@ -1,3 +1,1 @@
 # FacialExpressionRecognition
-
-* test
