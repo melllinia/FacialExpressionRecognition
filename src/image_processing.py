@@ -32,9 +32,3 @@ class ImageProcessor:
             cv2.putText(self.img, labels[face_id], (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         return self.img
 
-
-# processor = ImageProcessor('golden-trio.jpg')
-# processor.find_faces()
-# print(processor.get_cropped_faces())
-# processor.add_labels(['a', 'b', 'c'])
-# processor.show_faces()
