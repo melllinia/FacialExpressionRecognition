@@ -48,8 +48,8 @@ transform = transforms.Compose([
 ])
 
 # Create datasets and dataloaders
-train_dataset = EmotionDataset(root_dir='/home/hovhannes/Desktop/FacialExpressionRecognition/dataset/train/', transform=transform)
+train_dataset = EmotionDataset(root_dir='../dataset/train/', transform=transform)
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
 
-val_dataset = EmotionDataset(root_dir='/home/hovhannes/Desktop/FacialExpressionRecognition/dataset/test/', transform=transform)
+val_dataset = EmotionDataset(root_dir='../dataset/test/', transform=transform)
 val_loader = DataLoader(val_dataset, batch_size=64, shuffle=False)
