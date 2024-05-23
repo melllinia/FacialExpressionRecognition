@@ -1,6 +1,8 @@
 import torch
 import uvicorn
 from fastapi import FastAPI, HTTPException
+from model.net import CNN
+import torch.optim as optim
 
 app = FastAPI()
 
@@ -14,8 +16,18 @@ emotions = {
     6 : 'Surprise'
 }
 
-model = torch.jit.load('./model/fer_model.pt')
+model = CNN()
+optimizer = optim.Adam(model.parameters())
 
+# Load a model
+checkpoint = torch.load('/home/hovhannes/Desktop/FacialExpressionRecognition/model/checkpoints/model.pkl')
+model.load_state_dict(checkpoint['model_state_dict'])
+optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
+epoch = checkpoint['epochs']
+
+# Save this in train stage
+# accuracy_on_validation_set = evaluate(model, val_loader)
+# accuracy_on_train_set = evaluate(model, train_loader)
 
 @app.get("/model/summary", 
          summary="Get Model Summary",
