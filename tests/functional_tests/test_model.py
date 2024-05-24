@@ -1,7 +1,14 @@
+import pytest
 import requests
 import torch
 from source.server.utils import model, emotions, transform
 from PIL import Image
+
+@pytest.fixture
+def image_file():
+    img_path = '/home/hovhannes/Desktop/FacialExpressionRecognition/tests/functional_tests/images/happy_face.jpg'
+    with open(img_path, "rb") as file:
+        yield img_path, file
 
 def predict_model_local(img):
     pil_image = Image.open(img)
@@ -24,16 +31,11 @@ def predict_model_api(image_path, image_file):
     else:
         print(f"Request failed with status code: {response.status_code}")
 
-def test_model(image_path, image_file): 
-    model_api_prediction = predict_model_api(image_path, image_file)
-    model_local_prediction = predict_model_local(image_file)
+def test_model(image_file): 
+    image_path, file = image_file
+    model_api_prediction = predict_model_api(image_path, file)
+    model_local_prediction = predict_model_local(file)
     if model_api_prediction is not None and model_local_prediction is not None: 
         assert model_local_prediction == model_api_prediction, "The api response and model response were different." 
-        print("Everything is good !!!")
     else:
-        print("The response of api or the response of the model is None.")
-
-if __name__ == '__main__':
-    img_path = '/home/hovhannes/Desktop/FacialExpressionRecognition/tests/functional_tests/images/happy_face.jpg' 
-    with open(img_path, "rb") as image_file:
-        test_model(image_path=img_path, image_file=image_file)
+        pytest.fail("The response of api or the response of the model is None.")
