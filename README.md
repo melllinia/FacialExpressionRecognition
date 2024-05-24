@@ -102,7 +102,7 @@ Please make sure your code follows the project's coding standards and includes p
 
 ## Acknowledgements
 
-- [FER2013 Dataset](https://www.kaggle.com/deadskull7/fer2013)
+- [FER2013 Dataset](https://www.kaggle.com/datasets/msambare/fer2013)
 - [OpenCV](https://opencv.org/)
 - [PyTorch](https://pytorch.org/)
 
