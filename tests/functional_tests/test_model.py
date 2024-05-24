@@ -1,7 +1,7 @@
 import pytest
 import requests
 import torch
-from source.server.utils import model, emotions, transform
+from server.utils import model, emotions, transform
 from PIL import Image
 
 @pytest.fixture

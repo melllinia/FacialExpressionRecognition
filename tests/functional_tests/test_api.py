@@ -5,10 +5,12 @@ import requests
 def image_file():
     img_path = '/home/hovhannes/Desktop/FacialExpressionRecognition/tests/functional_tests/images/nature.jpg'
     with open(img_path, "rb") as file:
-        yield file
+        yield img_path, file
 
 def test_api(image_file): 
-    files = {"file": ("happy_face.jpg", image_file, "image/jpg")}
+    path, file = image_file
+
+    files = {"file": (path, file, "image/jpg")}
     response = requests.post(url="http://localhost:8000/model/detect-emotion/", files=files)
     if response.status_code == 200:
         data = response.json()

@@ -3,7 +3,7 @@ import uvicorn
 from fastapi import FastAPI, HTTPException, File, UploadFile, Response
 from fastapi.responses import JSONResponse
 import io
-from utils import *
+from server.utils import *
 
 app = FastAPI()
 
