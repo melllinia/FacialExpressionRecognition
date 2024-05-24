@@ -1,8 +1,8 @@
 # Facial Emotion Recognition
 
-![License](https://img.shields.io/github/license/melllinia/facial-emotion-recognition)
+![License](https://img.shields.io/github/license/melllinia/FacialExpressionRecognition)
 ![Python](https://img.shields.io/badge/python-3.7%2B-blue)
-![Issues](https://img.shields.io/github/issues/melllinia/facial-emotion-recognition)
+![Issues](https://img.shields.io/github/issues/melllinia/FacialExpressionRecognition)
 
 ## Table of Contents
 
