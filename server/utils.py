@@ -16,6 +16,7 @@ emotions = {
     6: 'Surprise'
 }
 
+# Creating model with random weights
 model = CNN()
 optimizer = optim.Adam(model.parameters())
 
@@ -23,12 +24,10 @@ optimizer = optim.Adam(model.parameters())
 checkpoint = torch.load('../model/checkpoints/model.pkl')
 model.load_state_dict(checkpoint['model_state_dict'])
 optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
-epoch = checkpoint['epochs']
+epochs = checkpoint['epochs']
+accuracy = checkpoint['accuracy']
+loss = checkpoint['loss']
 
-
-# Save this in train stage
-# accuracy_on_validation_set = evaluate(model, val_loader)
-# accuracy_on_train_set = evaluate(model, train_loader)
 
 def get_face_coordinates_dict(coordinates):
     return {
@@ -38,7 +37,10 @@ def get_face_coordinates_dict(coordinates):
         'h': str(coordinates[3])
     }
 
+
 def get_predicted_emotions(image, processor=None):
+    model.eval()
+
     global emotions
     if processor is None:
         processor = ip.ImageProcessor(image)
@@ -54,7 +56,6 @@ def get_predicted_emotions(image, processor=None):
         emotions_prob = {}
         with torch.no_grad():
             output = model(img)
-            _, predicted = torch.max(output.data, 1)
             for i in range(len(output.data[0])):
                 emotions_prob[emotions[i]] = round(output.data[0][i].item() * 100, 2)
 
@@ -64,6 +65,8 @@ def get_predicted_emotions(image, processor=None):
 
 
 def get_labeled_image(image):
+    model.eval()
+
     processor = ip.ImageProcessor(image)
     processor.detect_faces()
 

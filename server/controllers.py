@@ -3,7 +3,7 @@ import uvicorn
 from fastapi import FastAPI, HTTPException, File, UploadFile, Response
 from fastapi.responses import JSONResponse
 import io
-from server.utils import *
+from utils import *
 
 app = FastAPI()
 
@@ -18,7 +18,12 @@ def get_model():
     Returns:
     - **Dict[str, str]**: A dictionary containing the model's summary or evaluation details.
     """
-    return None
+    return {
+        'name': 'Facial Emotion Recognizer',
+        'epochs': epochs,
+        'accuracy': round(accuracy, 2),
+        'loss': round(loss, 2)
+    }
 
 
 @app.get("/model/emotions",
