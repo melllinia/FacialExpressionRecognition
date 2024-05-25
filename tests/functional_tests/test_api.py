@@ -3,7 +3,7 @@ import requests
 
 @pytest.fixture
 def image_file():
-    img_path = '/home/hovhannes/Desktop/FacialExpressionRecognition/tests/functional_tests/images/nature.jpg'
+    img_path = 'FacialExpressionRecognition/tests/functional_tests/images/nature.jpg'
     with open(img_path, "rb") as file:
         yield img_path, file
 

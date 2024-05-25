@@ -1,8 +1,8 @@
 import torch.nn as nn
 import torch
 import torch.optim as optim
-from net import CNN
-from emotion_dataset import train_loader, val_loader
+from .net import CNN
+from .emotion_dataset import train_loader, val_loader
 
 def train(model, train_loader, criterion, optimizer, losses, num_epochs=15):
     model.train()

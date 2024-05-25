@@ -21,7 +21,7 @@ model = CNN()
 optimizer = optim.Adam(model.parameters())
 
 # Load a model
-checkpoint = torch.load('/home/hovhannes/Desktop/FacialExpressionRecognition/source/model/checkpoints/model.pkl')
+checkpoint = torch.load('FacialExpressionRecognition/source/model/checkpoints/model.pkl')
 model.load_state_dict(checkpoint['model_state_dict'])
 optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
 epochs = checkpoint['epochs']
