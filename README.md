@@ -54,7 +54,7 @@ Facial Emotion Recognition is a project aimed at identifying human emotions from
 To start the REST API server, run:
 
 ```sh
-python3 uvicorn server.controllers::app
+uvicorn server.controllers::app
 ```
 
 The APIs will be available at [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
