@@ -33,7 +33,7 @@ Facial Emotion Recognition is a project aimed at identifying human emotions from
 1. Clone the repository:
     ```sh
     git clone https://github.com/melllinia/FacialExpressionRecognition.git
-    cd facial-emotion-recognition
+    cd FacialExpressionRecognition/source
     ```
 
 2. Create a virtual environment and activate it:
@@ -54,10 +54,11 @@ Facial Emotion Recognition is a project aimed at identifying human emotions from
 To start the REST API server, run:
 
 ```sh
-python3 uvicorn controllers::app
+python3 uvicorn server.controllers::app
 ```
 
 The APIs will be available at [http://127.0.0.1:8000/](http://127.0.0.1:8000/).
+The Swagger UI will be available at [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 
 ### API Endpoints
 
